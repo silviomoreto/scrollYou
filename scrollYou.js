@@ -14,16 +14,19 @@
         contructor: ScrollYou,
 
         init: function(e) {
-            this.$element.addClass('scrollyou')
-            this.render();
-            this.scrollListener();
-            this.initialTop = parseInt(this.$scroll.css('top'), 10);
+            if(this.getHeight() > this.$element.outerHeight(true)) {
+                this.$element.addClass('scrollyou')
+                this.render();
+                this.scrollListener();
+                this.initialTop = parseInt(this.$scroll.css('top'), 10);
+            }
         },
 
         render: function() {
             var scroll = this.options.scroll || '<div/>';
             this.$scroll = $(scroll);
             this.$scroll.addClass('scrollyou-bar');
+            this.$scroll.height(this.getHeight() / 10);
 
             this.$element.append(this.$scroll);
         },
