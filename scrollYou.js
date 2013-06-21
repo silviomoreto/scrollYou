@@ -26,7 +26,7 @@
             var scroll = this.options.scroll || '<div/>';
             this.$scroll = $(scroll);
             this.$scroll.addClass('scrollyou-bar');
-            this.$scroll.height(this.getHeight() / 10);
+            this.$scroll.height(Math.pow(this.$element.height(),2) / this.getHeight());
 
             this.$element.append(this.$scroll);
         },
