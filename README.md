@@ -29,6 +29,11 @@ JS:
 
     $('div.cow').scrollyou();
 
+## Options:
+
+- **acell:** The acelleration of scroll (default: 3)
+- **scroll:** The html template for scroll (default: <div />)
+- **height:** The full height of your element to scroll (default: inherit)
 
 ## Copyright and license
 
