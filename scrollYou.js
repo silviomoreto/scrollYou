@@ -57,7 +57,20 @@
                 console.error('Your element must have babies (children)');
             }
 
-            return this.$element.children().outerHeight(true) * this.$element.children().length;
+            var hide = false, height;
+
+            if(!this.$element.is(':visible')) {
+                this.$element.css('display','block');
+                hide = true;
+            }
+
+            height = this.$element.children().outerHeight(true) * this.$element.children().length;
+
+            if(hide) {
+                this.$element.css('display','');
+            }
+
+            return height;
         }
     },
 
