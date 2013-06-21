@@ -4,6 +4,10 @@ scrollYou
 Easiest jQuery plugin for cross-browser native scrolling... ever!
 All others plugins you must have at least 2 elements to make de scroll. With scrollYou you just need one.
 
+## Demo
+
+Temporarily: [Demo](http://silviomoreto.github.io/bootstrap-select/#scrollYou)
+
 ## Authors
 
 [Silvio Moreto](http://github.com/silviomoreto)
