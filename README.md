@@ -6,7 +6,7 @@ All others plugins you must have at least 2 elements to make de scroll. With scr
 
 ## Demo
 
-Temporarily: [Demo](http://silviomoreto.github.io/bootstrap-select/#scrollYou?utm_source=scrollYou&utm_medium=git&utm_campaign=scrollYou)
+Temporarily: [Demo](http://silviomoreto.github.io/bootstrap-select/#scrollYou)
 
 ## Authors
 
