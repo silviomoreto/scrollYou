@@ -16,6 +16,7 @@
         contructor: ScrollYou,
 
         init: function(e) {
+            this.resetHeight();
             if(this.getHeight() > this.getElementHeight() && this.getHeight() > 0) {
                 this.$element.addClass('scrollyou')
                 this.render();
@@ -64,7 +65,7 @@
                     console.error('Your element must have babies (children)');
                 }
 
-                var hide = false, height;
+                var height;
 
                 if(!this.$element.is(':visible')) {
                     var $clone = this.$element.clone().appendTo('body');
@@ -89,6 +90,8 @@
                     this.elementHeight = this.options.elementHeight;
                     return this.elementHeight;
                 }
+
+                var height;
 
                 if(!this.$element.is(':visible')) {
                     var $clone = this.$element.clone().appendTo('body');
