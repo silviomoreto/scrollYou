@@ -8,13 +8,15 @@
         this.$element = $(element);
         this.options = options;
         this.init();
+        this.height = undefined;
+        this.elementHeight = undefined;
     }
 
     ScrollYou.prototype = {
         contructor: ScrollYou,
 
         init: function(e) {
-            if(this.getHeight() > this.$element.outerHeight(true)) {
+            if(this.getHeight() > this.getElementHeight() && this.getHeight() > 0) {
                 this.$element.addClass('scrollyou')
                 this.render();
                 this.scrollListener();
@@ -26,7 +28,7 @@
             var scroll = this.options.scroll || '<div/>';
             this.$scroll = $(scroll);
             this.$scroll.addClass('scrollyou-bar');
-            this.$scroll.height(Math.pow(this.$element.height(),2) / this.getHeight());
+            this.$scroll.height(Math.pow(this.getElementHeight(), 2) / this.getHeight());
 
             this.$element.append(this.$scroll);
         },
@@ -43,7 +45,7 @@
                 event.currentTarget.scrollTop -= (delta * acell);
 
                 topf = event.currentTarget.scrollTop + this.initialTop +
-                       event.currentTarget.scrollTop * (this.$element.outerHeight(true)) / height;
+                       event.currentTarget.scrollTop * (this.getElementHeight()) / height;
 
                 this.$scroll.css({
                     'top': topf
@@ -52,28 +54,63 @@
         },
 
         getHeight: function() {
-            if(this.options.height) {
-                return this.options.height;
+            if(!this.height) {
+                if(this.options.height) {
+                    this.height = this.options.height;
+                    return this.options.height;
+                }
+
+                if(!this.$element.children().length) {
+                    console.error('Your element must have babies (children)');
+                }
+
+                var hide = false, height;
+
+                if(!this.$element.is(':visible')) {
+                    var $clone = this.$element.clone().appendTo('body');
+                    $clone.css('display', 'block');
+
+                    height = $clone.children().outerHeight(true) * $clone.children().length;
+
+                    $clone.remove();
+                }
+                else {
+                    height = this.$element.children().outerHeight(true) * this.$element.children().length;
+                }
+
+                this.height = height;
+            }
+            return this.height;
+        },
+
+        getElementHeight: function() {
+            if(!this.elementHeight) {
+                if(this.options.elementHeight) {
+                    this.elementHeight = this.options.elementHeight;
+                    return this.elementHeight;
+                }
+
+                if(!this.$element.is(':visible')) {
+                    var $clone = this.$element.clone().appendTo('body');
+                    $clone.css('display', 'block');
+
+                    height = $clone.height();
+
+                    $clone.remove();
+                }
+                else {
+                    height = this.$element.height();
+                }
+
+                this.elementHeight = height;
             }
 
-            if(!this.$element.children().length) {
-                console.error('Your element must have babies (children)');
-            }
+            return this.elementHeight;
+        },
 
-            var hide = false, height;
-
-            if(!this.$element.is(':visible')) {
-                this.$element.css('display','block');
-                hide = true;
-            }
-
-            height = this.$element.children().outerHeight(true) * this.$element.children().length;
-
-            if(hide) {
-                this.$element.css('display','');
-            }
-
-            return height;
+        resetHeight: function() {
+            this.height = undefined;
+            this.elementHeight = undefined;
         }
     },
 
