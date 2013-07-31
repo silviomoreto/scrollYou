@@ -36,7 +36,7 @@
 
         scrollListener: function() {
             var that = this;
-            var acell = this.options.acell || 3,
+            var acell = this.options.acell || 100,
                 height = this.getHeight();
 
             this.$element.on('mousewheel', $.proxy(function(event, delta, deltaX, deltaY) {
@@ -46,7 +46,8 @@
                 event.currentTarget.scrollTop -= (delta * acell);
 
                 topf = event.currentTarget.scrollTop + this.initialTop +
-                       event.currentTarget.scrollTop * (this.getElementHeight()) / height;
+                       event.currentTarget.scrollTop * (this.getElementHeight() - this.$scroll.height() - 2 * this.initialTop) / 
+                       (this.$element.prop('scrollHeight') - this.getElementHeight());
 
                 this.$scroll.css({
                     'top': topf
