@@ -35,9 +35,18 @@
         },
 
         scrollListener: function() {
-            var that = this;
-            var acell = this.options.acell || 100,
+            var acell = 3,
                 height = this.getHeight();
+                
+            if(this.options.acell == undefined){
+                // check if is windows, need a higher scroll value
+                if(navigator.platform.toUpperCase().indexOf('WIN') != -1) {
+                    acell = 100;
+                }
+            }
+            else {
+                acell = this.options.acell;
+            }
 
             this.$element.on('mousewheel', $.proxy(function(event, delta, deltaX, deltaY) {
                 var topf;
