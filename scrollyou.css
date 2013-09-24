@@ -23,3 +23,7 @@
 .scrollyou:hover .scrollyou-bar {
     background-color: rgba(0,0,0,0.5);
 }
+
+.scrollyou-show {
+    background-color: rgba(0,0,0,0.5);
+}
