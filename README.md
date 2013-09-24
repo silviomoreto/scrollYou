@@ -38,6 +38,7 @@ JS:
 - **acell:** The acelleration of scroll (default: 3)
 - **scroll:** The html template for scroll (default: <div />)
 - **height:** The full height of your element to scroll (default: inherit)
+- **show:** Make scroll bar appear all of the time (default: FALSE)
 
 ## Copyright and license
 

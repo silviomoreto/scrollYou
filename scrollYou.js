@@ -47,7 +47,11 @@
             else {
                 acell = this.options.acell;
             }
-
+            
+            if(this.options.show == true){
+                this.$scroll.addClass('scrollyou-show');
+            }
+     
             this.$element.on('mousewheel', $.proxy(function(event, delta, deltaX, deltaY) {
                 var topf;
 
