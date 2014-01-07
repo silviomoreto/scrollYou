@@ -1,0 +1,30 @@
+{
+  "name": "bootstrap-select",
+  "main": [
+    "scrollYou.css",
+    "scrollYou.js"
+  ],
+  "version": "1.0.0",
+  "homepage": "https://github.com/silviomoreto/scrollYou",
+  "authors": [
+    "silviomoreto"
+  ],
+  "keywords": [
+    "crossbrowser scroll",
+    "mousewheel scroll",
+    "jquery scroll",
+    "native scroll"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7",
+    "jquery-mousewheel": ">=3.0"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
